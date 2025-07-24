@@ -1,0 +1,9 @@
+FROM node:22-slim
+
+WORKDIR /app
+
+EXPOSE ${STRAPI_PORT}
+
+RUN yarn install
+
+CMD ["yarn", "dev"]

@@ -1,0 +1,9 @@
+FROM node:24-slim
+
+WORKDIR /app
+
+EXPOSE ${APP_PORT}
+
+RUN yarn install
+
+CMD ["yarn", "next", "dev", "--turbopack"]
