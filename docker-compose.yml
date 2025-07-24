@@ -1,0 +1,34 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio_app
+    restart: always
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    networks:
+      - portfolio_network
+    volumes:
+      - .:/app
+  strapi:
+    build:
+      context: ./strapi
+      dockerfile: Dockerfile
+    container_name: portfolio_strapi
+    environment:
+      DATABASE_CLIENT: sqlite
+    volumes:
+      - ./strapi:/app
+    ports:
+      - ${STRAPI_PORT}:${STRAPI_PORT}
+    restart: unless-stopped
+    networks:
+      - portfolio_network
+
+volumes:
+  strapi_data:
+
+networks:
+  portfolio_network:
+    driver: bridge
