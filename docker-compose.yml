@@ -16,8 +16,6 @@ services:
       dockerfile: Dockerfile
     container_name: portfolio3_strapi
     image: portfolio3_strapi
-    environment:
-      DATABASE_CLIENT: sqlite
     volumes:
       - strapi_data:/app/.tmp
     ports:
