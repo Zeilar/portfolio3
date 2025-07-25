@@ -47,22 +47,24 @@ jobs:
             echo "APP_PORT=${{ secrets.APP_PORT }}" >> .env
             echo "APP_REVALIDATE_SECRET=${{ secrets.APP_REVALIDATE_SECRET }}" >> .env
             echo "NEXT_TELEMETRY_DISABLED=${{ secrets.APP_NEXT_TELEMETRY_DISABLED }}" >> .env
-            
-            rm strapi/.env
-            echo "HOST=0.0.0.0" >> strapi/.env
-            echo "PORT=1337" >> strapi/.env
-            echo "DATABASE_CLIENT=sqlite" >> strapi/.env
-            echo "DATABASE_SSL=false" >> strapi/.env
-            echo "DATABASE_FILENAME=.tmp/data.db" >> strapi/.env
-            echo "APP_KEYS=${{ secrets.STRAPI_APP_KEYS }}" >> strapi/.env
-            echo "API_TOKEN_SALT=${{ secrets.STRAPI_API_TOKEN_SALT }}" >> strapi/.env
-            echo "ADMIN_JWT_SECRET=${{ secrets.STRAPI_ADMIN_JWT_SECRET }}" >> strapi/.env
-            echo "TRANSFER_TOKEN_SALT=${{ secrets.STRAPI_TRANSFER_TOKEN_SALT }}" >> strapi/.env
-            echo "ENCRYPTION_KEY=${{ secrets.STRAPI_ENCRYPTION_KEY }}" >> strapi/.env
-            echo "JWT_SECRET=${{ secrets.STRAPI_JWT_SECRET }}" >> strapi/.env
-            
             docker build -t portfolio3_app .
-            docker build -t portfolio3_strapi ./strapi
+            
+            cd strapi
+            rm .env
+            echo "HOST=0.0.0.0" >> .env
+            echo "PORT=1337" >> .env
+            echo "DATABASE_CLIENT=sqlite" >> .env
+            echo "DATABASE_SSL=false" >> .env
+            echo "DATABASE_FILENAME=.tmp/data.db" >> .env
+            echo "APP_KEYS=${{ secrets.STRAPI_APP_KEYS }}" >> .env
+            echo "API_TOKEN_SALT=${{ secrets.STRAPI_API_TOKEN_SALT }}" >> .env
+            echo "ADMIN_JWT_SECRET=${{ secrets.STRAPI_ADMIN_JWT_SECRET }}" >> .env
+            echo "TRANSFER_TOKEN_SALT=${{ secrets.STRAPI_TRANSFER_TOKEN_SALT }}" >> .env
+            echo "ENCRYPTION_KEY=${{ secrets.STRAPI_ENCRYPTION_KEY }}" >> .env
+            echo "JWT_SECRET=${{ secrets.STRAPI_JWT_SECRET }}" >> .env
+            docker build -t portfolio3_strapi .
+
+            cd ..
 
             docker compose restart
           EOF
