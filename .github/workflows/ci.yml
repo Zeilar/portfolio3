@@ -27,10 +27,13 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Build
+      - name: Build app
         run: yarn build
         env:
           NEXT_TELEMETRY_DISABLED: "1"
+
+      - name: Build Strapi
+        run: cd strapi && yarn build
 
       - name: Deploy containers
         env:
