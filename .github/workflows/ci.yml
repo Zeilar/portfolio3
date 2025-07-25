@@ -48,7 +48,7 @@ jobs:
             echo "APP_REVALIDATE_SECRET=${{ secrets.APP_REVALIDATE_SECRET }}" >> .env
             echo "NEXT_TELEMETRY_DISABLED=${{ secrets.APP_NEXT_TELEMETRY_DISABLED }}" >> .env
             
-            rm .env strapi/.env
+            rm strapi/.env
             echo "HOST=0.0.0.0" >> strapi/.env
             echo "PORT=1337" >> strapi/.env
             echo "DATABASE_CLIENT=sqlite" >> strapi/.env
