@@ -3,7 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: portfolio_app
+    container_name: portfolio3_app
+    image: portfolio3_app
     restart: always
     ports:
       - ${APP_PORT}:${APP_PORT}
@@ -13,7 +14,8 @@ services:
     build:
       context: ./strapi
       dockerfile: Dockerfile
-    container_name: portfolio_strapi
+    container_name: portfolio3_strapi
+    image: portfolio3_strapi
     environment:
       DATABASE_CLIENT: sqlite
     volumes:
