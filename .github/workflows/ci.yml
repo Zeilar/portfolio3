@@ -45,6 +45,7 @@ jobs:
             
             rm .env
             echo "APP_PORT=${{ secrets.APP_PORT }}" >> .env
+            echo "APP_STRAPI_API_KEY=${{ secrets.APP_STRAPI_API_KEY }}" >> .env
             echo "APP_REVALIDATE_SECRET=${{ secrets.APP_REVALIDATE_SECRET }}" >> .env
             echo "NEXT_TELEMETRY_DISABLED=${{ secrets.APP_NEXT_TELEMETRY_DISABLED }}" >> .env
             docker build -t portfolio3_app .
