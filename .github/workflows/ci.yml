@@ -24,13 +24,16 @@ jobs:
           node-version: 22.16.0
           cache: "yarn"
 
-      - name: Install dependencies
+      - name: Install app dependencies
         run: yarn install --frozen-lockfile
 
       - name: Build app
         run: yarn build
         env:
           NEXT_TELEMETRY_DISABLED: "1"
+
+      - name: Install Strapi dependencies
+        run: cd strapi && yarn install --frozen-lockfile
 
       - name: Build Strapi
         run: cd strapi && yarn build
