@@ -21,4 +21,4 @@ EXPOSE ${STRAPI_PORT}
 
 RUN mkdir -p ./public/uploads && chmod -R 777 ./public/uploads
 
-CMD ["node", "server.js"]
+CMD ["yarn", "start"]
