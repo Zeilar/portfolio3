@@ -42,12 +42,27 @@ jobs:
           ssh -o StrictHostKeyChecking=no root@angelin.dev << 'EOF'
             cd repositories/portfolio3
             git pull
+            
             rm .env
             echo "APP_PORT=${{ secrets.APP_PORT }}" >> .env
             echo "APP_REVALIDATE_SECRET=${{ secrets.APP_REVALIDATE_SECRET }}" >> .env
-            echo "NEXT_TELEMETRY_DISABLED=${{ secrets.NEXT_TELEMETRY_DISABLED }}" >> .env
+            echo "NEXT_TELEMETRY_DISABLED=${{ secrets.APP_NEXT_TELEMETRY_DISABLED }}" >> .env
+            
+            rm .env strapi/.env
+            echo "HOST=0.0.0.0" >> strapi/.env
+            echo "PORT=1337" >> strapi/.env
+            echo "DATABASE_CLIENT=sqlite" >> strapi/.env
+            echo "DATABASE_SSL=false" >> strapi/.env
+            echo "DATABASE_FILENAME=.tmp/data.db" >> strapi/.env
+            echo "APP_KEYS=${{ secrets.STRAPI_APP_KEYS }}" >> strapi/.env
+            echo "API_TOKEN_SALT=${{ secrets.STRAPI_API_TOKEN_SALT }}" >> strapi/.env
+            echo "ADMIN_JWT_SECRET=${{ secrets.STRAPI_ADMIN_JWT_SECRET }}" >> strapi/.env
+            echo "TRANSFER_TOKEN_SALT=${{ secrets.STRAPI_TRANSFER_TOKEN_SALT }}" >> strapi/.env
+            echo "ENCRYPTION_KEY=${{ secrets.STRAPI_ENCRYPTION_KEY }}" >> strapi/.env
+            echo "JWT_SECRET=${{ secrets.STRAPI_JWT_SECRET }}" >> strapi/.env
+            
             docker build -t portfolio3_app .
             docker build -t portfolio3_strapi ./strapi
-            docker compose down
-            docker compose up -d
+
+            docker compose restart
           EOF
