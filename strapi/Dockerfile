@@ -18,9 +18,9 @@ WORKDIR /app
 COPY --from=builder /app ./
 
 ENV NODE_ENV=production
-ENV PORT=${STRAPI_PORT}
+ENV PORT=1337
 
-EXPOSE ${STRAPI_PORT}
+EXPOSE 1337
 
 RUN mkdir -p ./public/uploads && chmod -R 777 ./public/uploads
 

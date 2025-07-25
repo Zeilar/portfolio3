@@ -16,10 +16,6 @@ declare global {
        * 1 or 0.
        */
       NEXT_TELEMETRY_DISABLED: string;
-      /**
-       * Default 1337.
-       */
-      STRAPI_PORT: string;
     }
   }
 }

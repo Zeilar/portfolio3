@@ -46,7 +46,6 @@ jobs:
             echo "APP_PORT=${{ secrets.APP_PORT }}" >> .env
             echo "APP_REVALIDATE_SECRET=${{ secrets.APP_REVALIDATE_SECRET }}" >> .env
             echo "NEXT_TELEMETRY_DISABLED=${{ secrets.NEXT_TELEMETRY_DISABLED }}" >> .env
-            echo "STRAPI_PORT=${{ secrets.STRAPI_PORT }}" >> .env
             docker build -t portfolio3_app .
             docker build -t portfolio3_strapi ./strapi
             docker compose down

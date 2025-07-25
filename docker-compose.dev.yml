@@ -21,7 +21,7 @@ services:
     volumes:
       - ./strapi:/app
     ports:
-      - ${STRAPI_PORT}:${STRAPI_PORT}
+      - 1337:1337
     restart: unless-stopped
     networks:
       - portfolio_network_dev
