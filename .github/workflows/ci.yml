@@ -32,12 +32,6 @@ jobs:
         env:
           NEXT_TELEMETRY_DISABLED: "1"
 
-      - name: Install Strapi dependencies
-        run: cd strapi && yarn install --frozen-lockfile
-
-      - name: Build Strapi
-        run: cd strapi && yarn build
-
       - name: Deploy containers
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
