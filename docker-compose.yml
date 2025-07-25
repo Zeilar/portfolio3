@@ -9,8 +9,6 @@ services:
       - ${APP_PORT}:${APP_PORT}
     networks:
       - portfolio_network
-    volumes:
-      - .:/app
   strapi:
     build:
       context: ./strapi
@@ -19,7 +17,7 @@ services:
     environment:
       DATABASE_CLIENT: sqlite
     volumes:
-      - ./strapi:/app
+      - strapi_data:/app/.tmp
     ports:
       - ${STRAPI_PORT}:${STRAPI_PORT}
     restart: unless-stopped

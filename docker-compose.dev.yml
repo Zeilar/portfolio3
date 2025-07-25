@@ -26,9 +26,6 @@ services:
     networks:
       - portfolio_network_dev
 
-volumes:
-  strapi_data:
-
 networks:
   portfolio_network_dev:
     driver: bridge

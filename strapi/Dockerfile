@@ -12,13 +12,13 @@ FROM node:22-slim
 
 WORKDIR /app
 
-COPY --from=builder /app /app
+COPY --from=builder /app .
 
 ENV NODE_ENV=production
 ENV PORT=${STRAPI_PORT}
 
 EXPOSE ${STRAPI_PORT}
 
-RUN mkdir -p /app/public/uploads && chmod -R 777 /app/public/uploads
+RUN mkdir -p ./public/uploads && chmod -R 777 ./public/uploads
 
 CMD ["node", "server.js"]
