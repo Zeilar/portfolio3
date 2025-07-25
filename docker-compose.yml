@@ -25,6 +25,8 @@ services:
     restart: unless-stopped
     networks:
       - portfolio_network
+    env_file:
+      - ./strapi/.env
 
 volumes:
   strapi_data:
