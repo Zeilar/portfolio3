@@ -60,7 +60,7 @@ export default async function Page() {
         </div>
         <div className="flex gap-4 flex-wrap justify-center">
           <SocialButton>
-            <Link href="https://github.com/Zeilar" title="Zeilar">
+            <Link href="https://github.com/Zeilar" title="Zeilar" target="_blank">
               <IoLogoGithub className="size-8" />
             </Link>
           </SocialButton>
@@ -71,6 +71,7 @@ export default async function Page() {
             <Link
               href="https://www.linkedin.com/in/philip-angelin-a36b50138/"
               title="Philip Angelin"
+              target="_blank"
             >
               <IoLogoLinkedin className="size-8" />
             </Link>
