@@ -14,10 +14,21 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SEO_DESCRIPTION = "Welcome to my personal portfolio.";
+
+const SEO_TITLE = "Angelin Portfolio";
+
 export const metadata: Metadata = {
-  title: "Angelin",
-  description: "Welcome to my personal portfolio.",
+  title: SEO_TITLE,
+  description: SEO_DESCRIPTION,
   icons: { icon: [{ url: "/favicon.png", type: "image/png" }] },
+  openGraph: {
+    type: "website",
+    description: SEO_DESCRIPTION,
+    title: SEO_TITLE,
+    url: "https://angelin.dev",
+    images: "https://angelin.dev/favicon.png",
+  },
 };
 
 export const dynamic = "force-dynamic";
