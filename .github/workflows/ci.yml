@@ -18,9 +18,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Cache node_modules
       - uses: actions/setup-node@v4
         with:
+          # Must match .nvmrc.
           node-version: 22.16.0
           cache: "yarn"
 
@@ -41,6 +41,7 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh -o StrictHostKeyChecking=no root@angelin.dev << 'EOF'
             cd repositories/portfolio3
+
             git pull
             
             rm .env
