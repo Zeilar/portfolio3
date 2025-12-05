@@ -12,11 +12,11 @@ export function getProjectTag(id: number): `${StrapiWebhookModel}-${typeof id}` 
 }
 
 export function revalidateProjectTag(id: number): void {
-  revalidateTag(getProjectTag(id));
+  revalidateTag(getProjectTag(id), "max");
 }
 
 export function revalidateProjectsTag(): void {
-  revalidateTag(getProjectsTag());
+  revalidateTag(getProjectsTag(), "max");
 }
 
 export function getProjectsNextConfig(): NextFetchRequestConfig {
