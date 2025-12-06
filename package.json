@@ -8,7 +8,11 @@
     "lint": "next lint",
     "dev": "docker compose -f docker-compose.dev.yml up",
     "dev-down": "docker compose -f docker-compose.dev.yml down",
-    "dev-remove-volume": "docker compose -f docker-compose.dev.yml down -v"
+    "dev-remove-volume": "docker compose -f docker-compose.dev.yml down -v",
+    "production": "docker compose up -d",
+    "prod": "yarn production",
+    "build-app": "docker build -t portfolio3_app .",
+    "build-api": "docker build -t portfolio3_strapi ./strapi"
   },
   "dependencies": {
     "@tsparticles/engine": "^3.8.1",
