@@ -5,8 +5,8 @@ export function Glass({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
   return (
     <div
       className={classNames(
-        "backdrop-blur-sm border border-white/15 rounded-3xl p-8 max-w-md",
-        className
+        "backdrop-blur-sm border-2 border-white/15 rounded-3xl p-8 max-w-md",
+        className,
       )}
       {...props}
     />
